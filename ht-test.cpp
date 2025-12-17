@@ -15,7 +15,8 @@ int main()
         int, 
         DoubleHashProber<std::string, MyStringHash >, 
         std::hash<std::string>, 
-        std::equal_to<std::string> > ht(0.7, dh);
+        std::equal_to<std::string> > ht(0.2, dh);
+        //changed the alpha
 
     // This is just arbitrary code. Change it to test whatever you like about your 
     // hash table implementation.

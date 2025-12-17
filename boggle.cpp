@@ -95,5 +95,34 @@ bool boggleHelper(const std::set<std::string>& dict, const std::set<std::string>
 								   std::string word, std::set<std::string>& result, unsigned int r, unsigned int c, int dr, int dc)
 {
 //add your solution here!
+//position we are looking at
+  if(r<board.size()&&c<board.size()){
+  char thing = board[r][c];
+  word=word+thing;
+  bool val=false;
+  //if(c<board.size()||r<board.size()){
+  if (prefix.find(word)!=prefix.end()){
+    val = boggleHelper(dict,prefix,board,word,result,r+dr,c+dc,dr,dc);
+  }
+  //meaning it is not in prefix
+  else{
+    //this mean nothing longer
+    val=false;
+  }
+  //this emans that we add the word if it exists and if nothing else if found to be longer int he recursion
+  if(dict.find(word)!=dict.end()&&!val){
+    result.insert(word);
+    return true;
+  }
+  //return whatever val is meaning if there was something found or not
+  else{
+    //this must be val and not false. false is too harsh as some tests fail
+    return val;
+  }
+  }
+  //if not in the bound, then leave
+  else{
+    return false;
+  }
 
 }
